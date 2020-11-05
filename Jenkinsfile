@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'SAGARLINUX' }
     triggers { pollSCM ('* * * * *') }
-     stages {
+    stages {
         stage('clone and compile') {
             steps {
                 git branch: 'declarative'
