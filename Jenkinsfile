@@ -1,9 +1,13 @@
-node ('SAGARLINUX'){
-    stage ('scm'){
-       git branch: 'master', url ='https://github.com/wakaleo/game-of-life.git'
-    }
-    stage('build'){
-        sh 'mvn package'
+pipeline{
+    agent {label 'SAGARLINUX'}
+    triggers {pollscm ('* * * * *')}
+     stages{
+        stage ('clone and compile'){
+            steps {
+                url: 'https://github.com/sagar-s-o-gopi/game-of-life.git'
+                sh 'mvn  package'
+            }
+            
+        }
     }
 }
-
