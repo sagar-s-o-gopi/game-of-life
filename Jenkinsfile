@@ -5,7 +5,7 @@ pipeline {
         stage('scm') {
             steps {
                 git branch: 'declarative',
-                url: 'https://github.com/jenkinsci/jenkins.git'
+                url: 'https://github.com/sagar-s-o-gopi/game-of-life.git'  
             }
         }
         stage('package'){
