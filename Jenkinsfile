@@ -1,6 +1,7 @@
 pipeline {
     agent { label 'SAGARLINUX' }
     triggers { upstream(upstreamProjects: 'job-1', threshold: hudson.model.Result.SUCCESS) }
+    parameters { string(name: 'DEPLOY_ENV', defaultValue: 'master', description: 'this is for checking') }
     stages{
         stage('scm') {
             steps {
