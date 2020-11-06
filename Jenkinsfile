@@ -11,6 +11,8 @@ pipeline {
         stage('package'){
             steps {
                 sh 'mvn package'
+                input 'can i proceed to next step'
+                archiveArtifacts 'gameoflife-web/target/*.war'
             }
         }
     }
