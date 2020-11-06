@@ -1,6 +1,6 @@
 pipeline {
     agent { label 'SAGARLINUX' }
-    triggers { upstream(upstreamProjects: 'job1', threshold: hudson.model.Result.SUCCESS) }
+    triggers { upstream(upstreamProjects: 'job-1', threshold: hudson.model.Result.SUCCESS) }
     stages{
         stage('scm') {
             steps {
