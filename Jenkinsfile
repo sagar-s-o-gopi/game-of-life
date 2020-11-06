@@ -1,14 +1,17 @@
 pipeline {
     agent { label 'SAGARLINUX' }
-    triggers { pollSCM ('* * * * *') }
-    stages {
-        stage('clone and compile') {
+    triggers { upstream(upstreamProjects: 'job1', threshold: hudson.model.Result.SUCCESS) }
+    stages{
+        stage('scm') {
             steps {
-                git branch: 'declarative'
-                url: 'https://github.com/sagar-s-o-gopi/game-of-life.git'
-                sh 'mvn  package'
+                git branch: 'declarative',
+                url: 'https://github.com/jenkinsci/jenkins.git'
             }
-            
+        }
+        stage('package'){
+            steps {
+                sh 'mvn package'
+            }
         }
     }
 }
